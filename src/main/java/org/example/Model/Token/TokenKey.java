@@ -1,7 +1,7 @@
 package org.example.Model.Token;
 
 
-class TokenKey implements ITokenKey {
+public class TokenKey implements ITokenKey {
     private String key = "MONKEY";
 
     @Override

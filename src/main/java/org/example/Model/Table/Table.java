@@ -49,7 +49,7 @@ public class Table implements ITable {
 
             return Response.ok(jsonb.toJson(Result)).build();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("MYError: " + e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
         }
     }

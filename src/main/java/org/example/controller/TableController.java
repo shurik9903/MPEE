@@ -1,11 +1,13 @@
 package org.example.controller;
 
 import org.example.Model.Table.ITable;
-import org.example.Model.Token.IToken;
-import org.example.Model.Token.Token;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
+import org.example.Model.Token.ITokenKey;
+import org.example.Model.Token.ITokenValidator;
+import org.example.Model.Token.TokenKey;
+import org.example.Model.Token.TokenValidator;
 
 import java.util.HashMap;
 
@@ -20,15 +22,14 @@ public class TableController{
 	@Produces("application/json")
 	public Response doGet(@PathParam("UserID") String UserID, @HeaderParam("Token") String UserToken) {
 		try {
-			IToken token = new Token();
-			if (!token.CheckToken(UserToken))
-				return token.CreateResponse(new HashMap<>() {{
-					put("Msg", "Token Error");
-				}});
+			ITokenKey tokenKey = new TokenKey();
+			ITokenValidator tokenValidator = new TokenValidator(tokenKey.getKey());
+			System.out.println("Test:" + tokenValidator.validate(UserToken));
 
 			return tab.GetDBData(UserID);
 		}catch (Exception e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
+			System.out.println("MYError" + e);
+            return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage() + "qweqwe").build();
 		}
 	}
 
@@ -37,15 +38,15 @@ public class TableController{
     @Produces("application/json")
 	public Response doPost(String TableData, @HeaderParam("Token") String UserToken) {
 		try {
-			IToken token = new Token();
-			if (!token.CheckToken(UserToken))
-				return token.CreateResponse(new HashMap<>() {{
-					put("Msg", "Token Error");
-				}});
+			ITokenKey tokenKey = new TokenKey();
+			ITokenValidator tokenValidator = new TokenValidator(tokenKey.getKey());
+			System.out.println("Test:" + tokenValidator.validate(UserToken));
+
 
 			return tab.SetData(TableData);
 		} catch (Exception e) {
-			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
+			System.out.println("MYError: " + e);
+			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()+"qweqwe").build();
 		}
 	}
 

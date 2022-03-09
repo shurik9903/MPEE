@@ -7,13 +7,10 @@ import io.jsonwebtoken.io.Encoders;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Base64;
 import java.util.Date;
 
-class TokenIssuer implements ITokenIssuer{
+public class TokenIssuer implements ITokenIssuer{
 
     private String key;
 
@@ -23,7 +20,7 @@ class TokenIssuer implements ITokenIssuer{
     }
 
     @Override
-    public String JWS_Create(String username){
+    public String JWS_Create_Token(String username){
 
         String header = "{\"alg\":\"HS256\"}";
         String claims = "{\"sub\":\""+username+"\"}";
@@ -48,20 +45,14 @@ class TokenIssuer implements ITokenIssuer{
     @Override
     public String issueToken(String username) {
 
-        String jws = JWS_Create(username);
-
-        LocalDateTime expiryPeriod = LocalDateTime.now().plusMinutes(600L);
-        Date expirationDateTime = Date.from(
-                expiryPeriod.atZone(ZoneId.systemDefault())
-                        .toInstant());
-
+        String jws = JWS_Create_Token(username);
 
         String compactJws = Jwts.builder()
                 .setSubject(username)
                 .claim("scope", "user")
                 .signWith(SignatureAlgorithm.HS256, key)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + (1000)))
+                .setExpiration(new Date(new Date().getTime() + (1000*10)))
                 .compact();
 
         return compactJws;

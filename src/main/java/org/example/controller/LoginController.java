@@ -22,6 +22,8 @@ public class LoginController {
 	@Produces("application/json")
 	public Response doGet(@PathParam("login") String login, @PathParam("password") String password, @HeaderParam("Token") String UserToken) {
 		try {
+			System.out.println("Test111");
+
 			return log.LoginFunc(login, password);
 		} catch (Exception e) {
 			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();

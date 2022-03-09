@@ -4,12 +4,12 @@ import io.jsonwebtoken.*;
 
 import java.security.Key;
 
-class TokenValidator implements ITokenValidator{
+public class TokenValidator implements ITokenValidator{
 
-    private Key key;
+    private String key;
 
 
-    public TokenValidator(Key lKey) {
+    public TokenValidator(String lKey) {
         key = lKey;
     }
 
