@@ -6,8 +6,7 @@ export const Registration_module = (function(){
 
         async Registration_async(RegData) {
 
-            let response = await fetch('/jsp/api/registration', { method: 'POST', headers: { 'Content-Type': 'application/json;charset=utf-8' }, body: JSON.stringify(RegData)});
-
+            let response = await fetch('/MPEE/api/registration', { method: 'POST', headers: { 'Content-Type': 'application/json;charset=utf-8' }, body: JSON.stringify(RegData)});
             if (response.ok) {
                 let data = await response.json();
                 let Msg = "";
@@ -16,13 +15,9 @@ export const Registration_module = (function(){
                     Msg = data.Msg;
 
                 return Msg;
-            } else {
-                throw Error("response.serverError" + response.Error)
-            }
-
-
+            } else throw Error("response.serverError" + response.errors);
         };
-    }
+    };
 
     let Registration = RegData => {
         return new Registration_class().Registration_async(RegData);

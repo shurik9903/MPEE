@@ -8,7 +8,7 @@ export const Login_module = (function(){
             let login = LoginData.login;
             let password = LoginData.password;
 
-            let login_response = await fetch('/jsp/api/login/' + login + '/' + password, { method: 'GET'});
+            let login_response = await fetch('/MPEE/api/login/' + login + '/' + password, { method: 'GET', headers: { 'Token': 'null' }});
             if (login_response.ok) {
                 const data = await login_response.json();
 
@@ -21,9 +21,8 @@ export const Login_module = (function(){
                 ThisUser.UserToken = data.Token;
 
                 return 'ok';
-            } else {
-                throw Error("response.serverError " + response.Error);
-            }
+            } else throw Error("response.serverError " + response.errors);
+
 
         };
 

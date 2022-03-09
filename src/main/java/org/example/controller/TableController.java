@@ -22,14 +22,18 @@ public class TableController{
 	@Produces("application/json")
 	public Response doGet(@PathParam("UserID") String UserID, @HeaderParam("Token") String UserToken) {
 		try {
-			ITokenKey tokenKey = new TokenKey();
-			ITokenValidator tokenValidator = new TokenValidator(tokenKey.getKey());
-			System.out.println("Test:" + tokenValidator.validate(UserToken));
+			try {
+				ITokenKey tokenKey = new TokenKey();
+				ITokenValidator tokenValidator = new TokenValidator(tokenKey.getKey());
+				tokenValidator.validate(UserToken);
+			}catch (Exception e){
+				return Response.status(Response.Status.FORBIDDEN).entity("|Error: " + e.getMessage()).build();
+			}
 
 			return tab.GetDBData(UserID);
 		}catch (Exception e) {
 			System.out.println("MYError" + e);
-            return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage() + "qweqwe").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
 		}
 	}
 
@@ -38,15 +42,17 @@ public class TableController{
     @Produces("application/json")
 	public Response doPost(String TableData, @HeaderParam("Token") String UserToken) {
 		try {
-			ITokenKey tokenKey = new TokenKey();
-			ITokenValidator tokenValidator = new TokenValidator(tokenKey.getKey());
-			System.out.println("Test:" + tokenValidator.validate(UserToken));
-
-
+			try {
+				ITokenKey tokenKey = new TokenKey();
+				ITokenValidator tokenValidator = new TokenValidator(tokenKey.getKey());
+				tokenValidator.validate(UserToken);
+			}catch (Exception e){
+				return Response.status(Response.Status.FORBIDDEN).entity("|Error: " + e.getMessage()).build();
+			}
 			return tab.SetData(TableData);
 		} catch (Exception e) {
 			System.out.println("MYError: " + e);
-			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()+"qweqwe").build();
+			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
 		}
 	}
 

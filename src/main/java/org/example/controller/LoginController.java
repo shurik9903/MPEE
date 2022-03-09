@@ -26,6 +26,7 @@ public class LoginController {
 
 			return log.LoginFunc(login, password);
 		} catch (Exception e) {
+			System.out.println("|Error: " + e);
 			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
 		}
 	}

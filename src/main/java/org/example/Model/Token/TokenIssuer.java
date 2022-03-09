@@ -47,14 +47,12 @@ public class TokenIssuer implements ITokenIssuer{
 
         String jws = JWS_Create_Token(username);
 
-        String compactJws = Jwts.builder()
+        return Jwts.builder()
                 .setSubject(username)
                 .claim("scope", "user")
                 .signWith(SignatureAlgorithm.HS256, key)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + (1000*10)))
+                .setExpiration(new Date(new Date().getTime() + (1000*5)))
                 .compact();
-
-        return compactJws;
     }
 }

@@ -6,7 +6,7 @@ export const TableData_module = (function(){
 
         async GetTableData_async(){
             console.log(ThisUser.UserToken);
-            let response = await fetch('/jsp/api/table/' + ThisUser.UserID, { method: 'GET', headers: {'Token': ThisUser.UserToken}})
+            let response = await fetch('/MPEE/api/table/' + ThisUser.UserID, { method: 'GET', headers: {'Token': ThisUser.UserToken}})
             if(response.ok) {
                 const data = await response.json();
 
@@ -14,18 +14,13 @@ export const TableData_module = (function(){
 
                 if (data.Msg)
                     throw Error(Msg);
-
                 return data;
-
-            } else {
-                const data = await response.json();
+            } else
                 throw {
                     status: response.status,
-                    Msg: data.Msg
-                }
-            }
+                    Msg: response.message
+                };
         };
-
     };
 
     let TableData = function(){
@@ -44,7 +39,7 @@ export const SaveTableData_module =  (function(){
 
         async PostSaveData_async(TableData){
             
-            let response = await fetch('/jsp/api/table', { method: 'POST', headers: { 'Content-Type': 'application/json;charset=utf-8', 'Token': ThisUser.UserToken}, body: JSON.stringify(TableData) });
+            let response = await fetch('/MPEE/api/table', { method: 'POST', headers: { 'Content-Type': 'application/json;charset=utf-8', 'Token': ThisUser.UserToken}, body: JSON.stringify(TableData) });
             if (response.ok) {
                 const data = await response.json();
 
@@ -53,13 +48,11 @@ export const SaveTableData_module =  (function(){
                     Msg = data.Msg;
 
                 return data;
-            } else {
-                const data = await response.json();
+            } else
                 throw {
                     status: response.status,
-                    Msg: data.Msg
-                }
-            }  
+                    Msg: response.message
+                };
         };
     };
 

@@ -77,10 +77,11 @@ export const FormTable_module = (function () {
 
                 promise.then(result => text.innerText = result.Msg)
                     .catch(error => {
-                        if (error.status != 403)
-                            text.innerText = error.Msg
-                        else{
-                            console.log(error.Msg);
+                        if (error.status != 403){
+                            console.log(error);
+                            text.innerText = error.Msg;
+                        }else{
+                            console.log(error);
                             FormStart_module.ShowStart();
                         }
                     });
