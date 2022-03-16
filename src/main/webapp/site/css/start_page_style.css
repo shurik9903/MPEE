@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+.back {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    
+    /*background: radial-gradient(ellipse at bottom, #658eff 20%, #000011 100%); */
+    background: 
+    linear-gradient(-45deg, #0400ff, #000213, transparent 80%),   
+    linear-gradient(45deg, #000ac5, #001214, transparent 70%), 
+    linear-gradient(120deg, #00010f, #0051ff, transparent 70%), 
+    linear-gradient(-90deg, #00395a, #0a001b, transparent 70%);
+
+    background-size: 400% 400%;
+    
+    animation: back_gradient 40s ease infinite;
+
+    min-height: 800px;
+    min-width: 800px;
+    height: 100vh;
+}
+
+
+@keyframes back_gradient {
+    
+	0% {background-position: 0% 50%;}
+
+	33% {background-position: 50% 100%;}
+
+	66% {background-position: 100% 50%;}
+
+    100% {background-position: 0% 0%;}
+}
+
+.head,.footer {
+    display: flex;
+
+    background: #333;
+    color: #fff;
+    
+    width: 100%;
+    height: 10%;
+    
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.head {
+    border-bottom: 5px solid;
+}
+
+.footer {
+    border-top: 5px solid;
+}
+
+.head.border-gradient, .footer.border-gradient {
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left,#d6e9ff 0%, #0077ff 5%,#004594 20%,#002857 40%,#001c3d 50%,
+     #002857 60%,#004594 80%,#0077ff 95%,#d6e9ff 100%,transparent 80%);
+}
+
+.main {
+    display: flex;
+
+    width: 100%;
+    height: 80%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.entry{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    background: #333;
+    color: #fff;
+
+    min-width: 400px;
+    min-height: 500px;
+    height: 0;
+}
+
+.entry.border-gradient {
+    border: 10px solid;
+    border-image-slice: 1;
+
+    border-image-source: linear-gradient(to top,#74b5ff 0%, #002857 25%,#004594 50%,#0077ff 90%,#d6e9ff 100%,transparent 80%);
+    animation: entry_border_anim linear 5s infinite; 
+}
+
+@keyframes entry_border_anim {
+    
+    0% { border-image-source: linear-gradient(to top,#74b5ff 0%, #002857 25%,#004594 50%,#0077ff 75%,#d6e9ff 100%,transparent 80%);}
+
+    20% { border-image-source: linear-gradient(to top,#002857 0%,#004594 25%,#0077ff 50%,#d6e9ff 75%, #74b5ff 100%,transparent 80%);}
+    
+    40% { border-image-source: linear-gradient(to top,#004594 0%,#0077ff 25%,#d6e9ff 50%,#74b5ff 75%, #002857 100%,transparent 80%);}
+    
+    60% { border-image-source: linear-gradient(to top,#0077ff 0%,#d6e9ff 25%,#74b5ff 50%,#002857 75%, #004594 100%,transparent 80%);}
+    
+    80% { border-image-source: linear-gradient(to top,#d6e9ff 0%,#74b5ff 25%,#002857 50%,#004594 75%, #0077ff 100%,transparent 80%);}
+    
+    100% { border-image-source: linear-gradient(to top,#74b5ff 0%, #002857 25%,#004594 50%,#0077ff 75%,#d6e9ff 100%,transparent 80%);}
+
+}
+
+.entry > *{
+    display: flex;
+
+    border: 2px solid rgb(0, 0, 0);
+    background: #333;
+    color: #fff;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.E_head {
+    width: 100%;
+    height: 15%;
+}
+
+.E_main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    width: 100%;
+    height: 55%;
+}
+
+.E_info {
+    width: 100%;
+    height: 15%;
+
+    padding: 5px;
+    text-align: left;
+}
+
+.E_info .text-info {
+    min-width: 100%;
+    width: 0;
+    overflow: auto;
+    height: 100%;
+} 
+
+.E_button {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+    height: 15%;
+
+}
+
+.E_main .log-in-form ,.E_main .sign-up-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    min-width: 100%;
+    width: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+.E_main .log-in-form > *, .E_main .sign-up-form > * {
+    padding: 10px;
+} 

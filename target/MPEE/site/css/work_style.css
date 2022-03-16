@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+.back {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    color: #fff;
+    margin: 1% 1%;
+
+    min-width: 800px;
+    min-height: 800px;
+    height: 100vh;
+}
+
+.menu-wrapper{
+    background: #555;
+    color: #fff;
+    margin: 10px 2.5%;
+    width: 95%;
+}
+
+.menu-wrapper ul{
+    border: 5px solid #000;
+    border-spacing: 10px 10px;
+}
+
+.my_scroll {
+    display: flex;
+    overflow: hidden;
+    overflow-x: visible;
+    cursor: grab;
+    padding: 5px 5px;
+}
+
+.my_scroll li {
+    background-color: #fff;
+    color: #000;
+    display: inline;
+    text-align: center;
+    padding: 20px 10px;
+    white-space: nowrap;
+    border: 5px solid #000;
+    border-radius: 10px;
+    user-select: none;
+}
+
+    .my_scroll li:hover {
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+
+.main {
+    flex: 1 0 auto;
+    border: 5px solid #fff;
+    background: #555;
+    color: #fff;
+    margin: 10px 2.5% 2.5%;
+    position: relative;
+    
+    height: 0;
+}
+
+.game_window {
+    flex: 1 0 auto;
+    overflow: scroll;
+    min-height: 100%;
+    height: 0;
+}
+
+.game {
+    background: rgb(0, 0, 0);
+    min-width: 2000px;
+    min-height: 100%;
+    height: 2000px;
+    background-image: url("791455802.jpg");
+    background-size: 200px;
+    animation: back_glowing 20s infinite;
+}
+
+
+@keyframes back_glowing {
+    0% { -webkit-filter: brightness(1);}
+    20% { -webkit-filter: brightness(0.9);}
+    40% { -webkit-filter: brightness(1.2);}
+    50% { -webkit-filter: brightness(2);}
+    60% { -webkit-filter: brightness(1.2);}
+    80% { -webkit-filter: brightness(0.9);}
+    100% { -webkit-filter: brightness(1);}
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: absolute;
+    z-index: 100;
+    min-height: 100%;
+}
+
+.left-bar {
+    background: rgb(88, 88, 88);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 250px;
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.right-bar {
+    margin-top: 100px;
+    background: rgb(88, 88, 88);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 250px;
+    border: 5px solid rgb(0, 0, 0);
+}
+
+
+.scroll_bar_menu {
+    border-bottom: 5px solid #000;
+    height: 105px;
+}
+
+.scroll_bar_menu ul{
+    border-spacing: 10px 5px;
+}
+
+.view_menu {
+    flex: 1 0 auto;
+    height: 0;
+    margin: 2.5% 2.5%;
+}
+
+.view_menu ul{
+    min-height: 100%;
+    height: 0;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: visible;
+}

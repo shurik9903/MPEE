@@ -1,43 +1,51 @@
-import { FormStart_module } from '../start/StartForm.js';
 import { Registration_module } from './module/Registration.js';
+import { FormStart_module } from '../start/start_page_form.js'
 
-export const FormRegist_module = (function () {
+export const FormRegist_module = (() => {
 
     class FormRegist_class {
 
 
-        FormRegistration = '<form>' +
-            '<h2>Registration' +
-            '<p><strong>Please type your email: </strong>' +
-            '<input type="text" size="25" id="RegEmail" onkeydown="if (event.keyCode == 13) {return false;}"></p>' +
-            '<p><strong>Please type your user name: </strong>' +
-            '<input type="text" size="25" id="RegLogin" onkeydown="if (event.keyCode == 13) {return false;}"></p>' +
-            '<p><strong>Please type your password: </strong>' +
-            '<input type="password" size="15" id="RegPassword" onkeydown="if (event.keyCode == 13) {return false;}"></p>' +
-            '<p><strong>Please type your password: </strong>' +
-            '<input type="password" size="15" id="RegPassword2" onkeydown="if (event.keyCode == 13) {return false;}"></p>' +
-            '<p><input type="button" id="BackButton2" value="Back"/>' +
-            '<input type="button" id="RegistrationButton" value="Registration"/></p>' +
-            '<p id="Result"></p>' +
-            '</h2>' +
-            '</form>';
+        FormRegistration = '<div class="sign-up-form">'+
+        '<div class="input-email">'+
+            '<p>Почта</p>'+
+            '<input type="text" size="25" class="email-sign-up"></p>'+
+        '</div>'+
+        '<div class="input-login">'+
+            '<p>Логин</p>'+
+            '<input type="text" size="25" class="login-sign-up"></p>'+
+        '</div>'+
+        '<div class="input-pass1">'+
+            '<p>Пароль</p>'+
+            '<input type="text" size="25" class="pass1-sign-up"></p>'+
+        '</div>'+
+        '<div class="input-pass2">'+
+            '<p>Повторите пароль</p>'+
+            '<input type="text" size="25" class="pass2-sign-up"></p>'+
+        '</div>'+
+    '</div>';
 
 
         ShowRegistration() {
-            document.body.innerHTML = this.FormRegistration;
-            document.getElementById("BackButton2").onclick = FormStart_module.ShowStart;
-            document.getElementById("RegistrationButton").onclick = function () {
+            document.querySelector('.E_main').innerHTML = this.FormRegistration;
+            document.querySelector('.E_button').innerHTML = '<div class="back-button my-button">Назад</div>'+
+            '<div class="sign-up-button my-button">Зарегистрироваться</div>';
+
+            
+            document.querySelector('.back-button').onclick = () => FormStart_module.BackStart();
+
+            document.querySelector('.sign-up-button').onclick = function () {
 
                 let RegData = {
-                    email: document.getElementById("RegEmail").value,
-                    username: document.getElementById("RegLogin").value,
-                    password: document.getElementById("RegPassword").value,
-                    password2: document.getElementById("RegPassword2").value
+                    email: document.querySelector('.email-sign-up').value,
+                    username: document.querySelector('.login-sign-up').value,
+                    password: document.querySelector('.pass1-sign-up').value,
+                    password2: document.querySelector('.pass2-sign-up').value
                 };
 
                 let promise = Registration_module.Registration_async(RegData);
 
-                let text = document.getElementById("Result");
+                let text = document.querySelector('.E_info .text-info');
 
                 promise.then(
                     result => text.innerText = result,
