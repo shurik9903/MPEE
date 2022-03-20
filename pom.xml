@@ -108,6 +108,15 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
+
+                    <webResources>
+                        <resource>
+                            <directory>
+                                D:\Java project\MPEE\WEB
+                            </directory>
+                        </resource>
+                    </webResources>
+
                     <outputDirectory>D:\Java project\glassfish6\glassfish\domains\MyDomain\autodeploy</outputDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <archive>
@@ -118,4 +127,6 @@
         </plugins>
         <finalName>MPEE</finalName>
     </build>
+
+
 </project>
