@@ -1,4 +1,4 @@
-package org.example.Model.Table;
+package org.example.Model.Work;
 
 import org.example.Data.Entity.ETable;
 import org.example.Data.IDataBaseWork;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Table implements ITable {
+public class Work implements IWork {
 
     @Inject
     private IDataBaseWork DataBaseWork;

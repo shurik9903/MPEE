@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.Model.Table.ITable;
+import org.example.Model.Work.IWork;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
@@ -9,14 +9,12 @@ import org.example.Model.Token.ITokenValidator;
 import org.example.Model.Token.TokenKey;
 import org.example.Model.Token.TokenValidator;
 
-import java.util.HashMap;
 
-
-@Path("/table")
-public class TableController{
+@Path("/work")
+public class WorkController {
 
 	@Inject
-	private ITable tab;
+	private IWork work;
 
     @GET
     @Path("{UserID:.*}")
@@ -31,7 +29,7 @@ public class TableController{
 				return Response.status(Response.Status.FORBIDDEN).entity("|Error: " + e.getMessage()).build();
 			}
 
-			return tab.GetDBData(UserID);
+			return work.GetDBData(UserID);
 		}catch (Exception e) {
 			System.out.println("MYError" + e);
             return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();
@@ -50,7 +48,7 @@ public class TableController{
 			}catch (Exception e){
 				return Response.status(Response.Status.FORBIDDEN).entity("|Error: " + e.getMessage()).build();
 			}
-			return tab.SetData(TableData);
+			return work.SetData(TableData);
 		} catch (Exception e) {
 			System.out.println("MYError: " + e);
 			return Response.status(Response.Status.BAD_REQUEST).entity("|Error: " + e.getMessage()).build();

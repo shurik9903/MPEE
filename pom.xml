@@ -25,21 +25,21 @@
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>3.0.0</version>
+            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>jakarta.json</groupId>
             <artifactId>jakarta.json-api</artifactId>
-            <version>2.0.1</version>
+            <version>2.1.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>jakarta.json.bind</groupId>
             <artifactId>jakarta.json.bind-api</artifactId>
-            <version>2.0.0</version>
+            <version>3.0.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -53,21 +53,21 @@
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.0-B1</version>
+            <version>2.1.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.0.0</version>
+            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>jakarta.transaction</groupId>
             <artifactId>jakarta.transaction-api</artifactId>
-            <version>2.0.1-RC1</version>
+            <version>2.0.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -82,27 +82,27 @@
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>3.19.0</version>
+            <version>3.19.1</version>
         </dependency>
 
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>0.11.2</version>
+            <version>0.11.5</version>
         </dependency>
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>0.11.2</version>
+            <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
-            <version>0.11.2</version>
+            <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -119,12 +119,12 @@
                     <webResources>
                         <resource>
                             <directory>
-                                D:\Users\student\Documents\MOA195\Projects\MPEE\MPEE_WEB\WEB
+                                D:\Java project\MPEE\MPEE_WEB\WEB
                             </directory>
                         </resource>
                     </webResources>
 
-                    <outputDirectory>D:\Users\student\Documents\MOA195\glassfish6\glassfish\domains\domain1\autodeploy</outputDirectory>
+                    <outputDirectory>D:\Java project\glassfish6\glassfish\domains\MyDomain\autodeploy</outputDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>

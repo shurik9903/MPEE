@@ -49,7 +49,11 @@ public class DataBaseWork implements IDataBaseWork {
             Transaction.begin();
             entityManager.joinTransaction();
 
+            System.out.println("MY_TEST " + MailLogin + " " + Password );
+
             Query query = entityManager.createNativeQuery("Select * from users where (email = ? or name = ?) and password = ?", ELogin.class);
+
+            System.out.println("Testq" );
 
             query.setParameter(1, MailLogin)
                     .setParameter(2, MailLogin)
